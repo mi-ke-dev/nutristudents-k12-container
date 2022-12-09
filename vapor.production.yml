@@ -1,0 +1,33 @@
+id: 30284
+name: nutristudents-k12
+environments:
+  production:
+    memory: 2048
+    cli-memory: 1024
+    runtime: 'docker'
+    storage: production-menufreedom
+    database: aurora-postgres-west1-nutristudentsk12
+    cache: 'menufreedom-cache'
+    queue-database-session-persist: true
+    queue-timeout: 300
+    queue-memory: 1024
+    queue-concurrency: 20
+    domain:
+      - "*.menufreedom.com"
+      - "menufreedom.com"
+    build:
+      - 'COMPOSER_MIRROR_PATH_REPOS=1 composer install --no-dev'
+      - 'php artisan event:cache'
+    #      - 'npm ci && npm run prod && rm -rf node_modules'
+    deploy :
+      - 'php artisan migrate --force'
+  staging:
+    memory: 2048
+    cli-memory: 1024
+    runtime: 'docker'
+    storage: staging-menufreedom
+    database: aurora-postgres-west1-nutristudentsk12
+    build:
+      - 'composer install'
+    deploy :
+      - 'php artisan migrate --force'

@@ -1,0 +1,46 @@
+id: 22509
+name: nutristudents-k12
+environments:
+    development:
+        memory: 2048
+        cli-memory: 1024
+        runtime: docker
+        storage: nutristudents
+        build:
+            - 'composer install'
+        deploy:
+            - 'php artisan migrate --force'
+    production:
+        memory: 2048
+        cli-memory: 512
+        runtime: 'php-8.0:al2'
+        storage: nutristudents
+        build:
+            - 'COMPOSER_MIRROR_PATH_REPOS=1 composer install --no-dev'
+            - 'php artisan event:cache'
+            - 'npm ci && npm run prod && rm -rf node_modules'
+    staging:
+        memory: 2048
+        cli-memory: 1024
+        runtime: docker
+        storage: nutristudents
+        build:
+            - 'composer install'
+        deploy:
+            - 'php artisan migrate --force'
+    tenants:
+        memory: 2048 
+        cli-memory: 1024
+        timeout: 300
+        runtime: docker
+        storage: nutristudents
+        cache : 'harcourts'
+        queue-database-session-persist: true
+        queue-timeout: 300
+        queue-memory: 1024
+        queue-concurrency: 20
+        domain: '*.tinkerflow.io'
+        
+        
+        build:
+            - 'composer install'

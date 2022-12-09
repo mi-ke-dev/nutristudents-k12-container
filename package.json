@@ -1,0 +1,43 @@
+{
+    "private": true,
+    "scripts": {
+        "dev": "npm run development",
+        "development": "mix",
+        "watch": "mix watch",
+        "watch-poll": "mix watch -- --watch-options-poll=1000",
+        "hot": "mix watch --hot",
+        "prod": "npm run production",
+        "production": "mix --production"
+    },
+    "devDependencies": {
+        "@inertiajs/inertia": "^0.9.1",
+        "@inertiajs/inertia-vue3": "^0.4.2",
+        "@inertiajs/progress": "^0.2.5",
+        "@tailwindcss/forms": "^0.2.1",
+        "@tailwindcss/typography": "^0.3.0",
+        "@vue/compiler-sfc": "^3.2.33",
+        "axios": "^0.21",
+        "laravel-mix": "^6.0.6",
+        "laravel-vapor": "^0.5.1",
+        "lodash": "^4.17.19",
+        "postcss": "^8.4.12",
+        "postcss-import": "^12.0.1",
+        "tailwindcss": "^2.2.7",
+        "vue": "^3.2.33",
+        "vue-loader": "^16.1.2"
+    },
+    "dependencies": {
+        "@dafcoe/vue-collapsible-panel": "^0.2.0",
+        "@meforma/vue-toaster": "^1.2.2",
+        "@vueup/vue-quill": "^1.0.0-beta.7",
+        "autoprefixer": "10.4.5",
+        "click-outside-vue3": "^4.0.1",
+        "jquery": "^3.6.0",
+        "moment": "^2.29.3",
+        "quill-html-edit-button": "^2.2.12",
+        "smooth-dnd": "^0.12.1",
+        "stylus": "^0.54.8",
+        "stylus-loader": "^3.0.2",
+        "vue3-carousel": "^0.1.38"
+    }
+}
